@@ -12,12 +12,13 @@ def add_asset():
     name = data.get('name')
     description = data.get('description')
     status = data.get('status')
-    lifetime = data.get('lifetime')
+    nextMaintenance = data.get('nextMaintenance')
+    value = data.get('value')
 
-    if not userId or not name or not description or not status or not lifetime:
+    if not userId or not name or not description or not status or not nextMaintenance or not value:
         return jsonify({'error': 'Missing data'}), 400
 
-    new_asset = Asset(userId=userId, name=name, description=description, status=status, lifetime=lifetime)
+    new_asset = Asset(userId=userId, name=name, description=description, status=status, nextMaintenance=nextMaintenance, value=value)
     db.session.add(new_asset)
     db.session.commit()
 
@@ -26,7 +27,8 @@ def add_asset():
         'name': new_asset.name,
         'description': new_asset.description,
         'status': new_asset.status,
-        'lifetime': new_asset.lifetime
+        'nextMaintenance': new_asset.nextMaintenance,
+        'value': new_asset.value
     }), 201
 
 
@@ -52,7 +54,8 @@ def update_asset(id):
     name = data.get('name')
     description = data.get('description')
     status = data.get('status')
-    lifetime = data.get('lifetime')
+    nextMaintenance = data.get('nextMaintenance')
+    value = data.get('value')
 
     if name is not None:
         asset.name = name
@@ -60,8 +63,10 @@ def update_asset(id):
         asset.description = description
     if status is not None:
         asset.status = status
-    if lifetime is not None:
-        asset.lifetime = lifetime
+    if nextMaintenance is not None:
+        asset.nextMaintenance = nextMaintenance
+    if value is not None:
+        asset.value = value
 
     db.session.commit()
 
@@ -70,7 +75,8 @@ def update_asset(id):
         'name': asset.name,
         'description': asset.description,
         'status': asset.status,
-        'lifetime': asset.lifetime
+        'nextMaintenance': asset.nextMaintenance,
+        'value': asset.value
     }), 201
 
 
@@ -85,12 +91,12 @@ def add_dependency(id):
     description = data.get('description')
     status = data.get('status')
     value = data.get('value')
-    lifetime = data.get('lifetime')
+    nextMaintenance = data.get('nextMaintenance')
 
-    if not name or not description or not status or not value or not lifetime:
+    if not name or not description or not status or not value or not nextMaintenance:
         return jsonify({'error': 'Missing data'}), 400
 
-    new_dependency = AssetDependency(assetId=asset.id, name=name, description=description, status=status, value=value, lifetime=lifetime)
+    new_dependency = AssetDependency(assetId=asset.id, name=name, description=description, status=status, value=value, nextMaintenance=nextMaintenance)
     db.session.add(new_dependency)
     db.session.commit()
 
@@ -101,7 +107,7 @@ def add_dependency(id):
         'description': new_dependency.description,
         'status': new_dependency.status,
         'value': new_dependency.value,
-        'lifetime': new_dependency.lifetime
+        'nextMaintenance': new_dependency.nextMaintenance
     }), 201
 
 
@@ -136,7 +142,7 @@ def update_dependency(id, dep_id):
     description = data.get('description')
     status = data.get('status')
     value = data.get('value')
-    lifetime = data.get('lifetime')  
+    nextMaintenance = data.get('nextMaintenance')
 
     if name is not None:
         dependency.name = name
@@ -146,18 +152,19 @@ def update_dependency(id, dep_id):
         dependency.status = status
     if value is not None:
         dependency.value = value
-    if lifetime is not None:
-        dependency.lifetime = lifetime
+    if nextMaintenance is not None:
+        dependency.nextMaintenance = nextMaintenance
 
     db.session.commit()
 
     return jsonify({
         'id': dependency.id,
+        'assetId': dependency.assetId,
         'name': dependency.name,
         'description': dependency.description,
         'status': dependency.status,
         'value': dependency.value,
-        'lifetime': dependency.lifetime
+        'nextMaintenance': dependency.nextMaintenance
     }), 201
 
 
@@ -173,11 +180,11 @@ def get_assets():
     for asset in assets:
         asset_data = {
             'id': asset.id,
-            'userId': asset.userId,
             'name': asset.name,
             'description': asset.description,
             'status': asset.status,
-            'lifetime': asset.lifetime
+            'nextMaintenance': asset.nextMaintenance,
+            'value': asset.value
         }
         result.append(asset_data)
     
@@ -203,7 +210,7 @@ def get_dependencies(id):
             'description': dependency.description,
             'status': dependency.status,
             'value': dependency.value,
-            'lifetime': dependency.lifetime
+            'nextMaintenance': dependency.nextMaintenance
         }
         result.append(dependency_data)
 
