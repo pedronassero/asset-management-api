@@ -8,12 +8,14 @@ def add_asset():
     if not data:
         return jsonify({'error': 'Invalid data'}), 400
 
+
     userId = data.get('userId')
     name = data.get('name')
     description = data.get('description')
     status = data.get('status')
     nextMaintenance = data.get('nextMaintenance')
     value = data.get('value')
+    dependencies = data.get('dependencies')
 
     if not userId or not name or not description or not status or not nextMaintenance or not value:
         return jsonify({'error': 'Missing data'}), 400
@@ -22,13 +24,29 @@ def add_asset():
     db.session.add(new_asset)
     db.session.commit()
 
+    if dependencies:
+        for dependency_data in dependencies:
+            dependency_name = dependency_data.get('name')
+            dependency_description = dependency_data.get('description')
+            dependency_status = dependency_data.get('status')
+            dependency_value = dependency_data.get('value')
+            dependency_next_maintenance = dependency_data.get('nextMaintenance')
+
+            if not dependency_name or not dependency_description or not dependency_status or not dependency_value or not dependency_next_maintenance:
+                return jsonify({'error': 'Missing dependency data'}), 400
+
+            new_dependency = AssetDependency(assetId=new_asset.id, name=dependency_name, description=dependency_description, status=dependency_status, value=dependency_value, nextMaintenance=dependency_next_maintenance)
+            db.session.add(new_dependency)
+            
+    db.session.commit()
+
     return jsonify({
         'id': new_asset.id,
         'name': new_asset.name,
         'description': new_asset.description,
         'status': new_asset.status,
-        'nextMaintenance': new_asset.nextMaintenance,
-        'value': new_asset.value
+        'nextMaintenance': new_asset.nextMaintenance.strftime('%Y-%m-%d') if new_asset.nextMaintenance else None,
+        'value': new_asset.value,
     }), 201
 
 
@@ -169,7 +187,7 @@ def update_dependency(id, dep_id):
 
 
 
-# Listagem    
+# List
 @app.route('/assets', methods=['GET'])
 def get_assets():
     assets = Asset.query.all()

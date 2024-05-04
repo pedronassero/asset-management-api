@@ -10,6 +10,9 @@ COPY requirements.txt .
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy db.sql to the initialization directory for MySQL
+COPY db.sql ./docker-entrypoint-initdb.d/db.sql
+
 # Copy the current directory contents into the container at /app
 COPY . .
 

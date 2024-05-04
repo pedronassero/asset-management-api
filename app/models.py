@@ -1,5 +1,6 @@
 import secrets
 from app import db
+from sqlalchemy.orm import relationship
 
 class Asset(db.Model):
     __tablename__ = 'asset'
@@ -11,7 +12,8 @@ class Asset(db.Model):
     status = db.Column(db.Enum('CRITICAL', 'WARNING', 'HEALTHY'), default='HEALTHY')
     nextMaintenance = db.Column(db.Date, nullable=False)
     value = db.Column(db.Float, nullable=False)
-
+    dependencies = relationship("AssetDependency", backref="asset", cascade="all, delete-orphan")
+  
     def __init__(self, userId, name, description, nextMaintenance, value, status='HEALTHY'):
         self.id = secrets.token_hex(4)
         self.userId = userId
@@ -20,7 +22,6 @@ class Asset(db.Model):
         self.status = status
         self.nextMaintenance = nextMaintenance
         self.value = value
-
 
 
 class AssetDependency(db.Model):
@@ -32,7 +33,6 @@ class AssetDependency(db.Model):
     status = db.Column(db.Enum('CRITICAL', 'WARNING', 'HEALTHY'), default='HEALTHY')
     nextMaintenance = db.Column(db.Date)
     value = db.Column(db.Float)
-    
 
     def __init__(self, assetId, name, description, status='HEALTHY', value=None, nextMaintenance=None):
         self.id = secrets.token_hex(4)
