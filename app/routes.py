@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from app import app, db
 from app.models import Asset, AssetDependency
+from sqlalchemy import desc
 
 @app.route('/assets', methods=['POST'])
 def add_asset():
@@ -159,7 +160,7 @@ def update_dependency(id, dep_id):
 # List
 @app.route('/assets/<string:user_id>', methods=['GET'])
 def get_assets(user_id):
-    assets = Asset.query.filter_by(userId=user_id).all()
+    assets = Asset.query.filter_by(userId=user_id).order_by(desc(Asset.acquisitionDate)).all()
     if not assets:
         return jsonify({'error': 'No assets found for this user'}), 404
     
