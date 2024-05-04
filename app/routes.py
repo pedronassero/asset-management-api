@@ -45,8 +45,8 @@ def add_asset():
         'name': new_asset.name,
         'description': new_asset.description,
         'status': new_asset.status,
-        'nextMaintenance': new_asset.nextMaintenance.strftime('%Y-%m-%d') if new_asset.nextMaintenance else None,
-        'value': new_asset.value,
+        'nextMaintenance': new_asset.nextMaintenance,
+        'value': new_asset.value
     }), 201
 
 
@@ -95,37 +95,6 @@ def update_asset(id):
         'status': asset.status,
         'nextMaintenance': asset.nextMaintenance,
         'value': asset.value
-    }), 201
-
-
-@app.route('/assets/<string:id>/dependencies', methods=['POST'])
-def add_dependency(id):
-    data = request.json
-    asset = Asset.query.filter_by(id=id).first()
-    if not asset:
-        return jsonify({'error': 'Asset not found'}), 404
-    
-    name = data.get('name')
-    description = data.get('description')
-    status = data.get('status')
-    value = data.get('value')
-    nextMaintenance = data.get('nextMaintenance')
-
-    if not name or not description or not status or not value or not nextMaintenance:
-        return jsonify({'error': 'Missing data'}), 400
-
-    new_dependency = AssetDependency(assetId=asset.id, name=name, description=description, status=status, value=value, nextMaintenance=nextMaintenance)
-    db.session.add(new_dependency)
-    db.session.commit()
-
-    return jsonify({
-        'id': new_dependency.id,
-        'assetId': new_dependency.assetId,
-        'name': new_dependency.name,
-        'description': new_dependency.description,
-        'status': new_dependency.status,
-        'value': new_dependency.value,
-        'nextMaintenance': new_dependency.nextMaintenance
     }), 201
 
 
@@ -188,11 +157,11 @@ def update_dependency(id, dep_id):
 
 
 # List
-@app.route('/assets', methods=['GET'])
-def get_assets():
-    assets = Asset.query.all()
+@app.route('/assets/<string:user_id>', methods=['GET'])
+def get_assets(user_id):
+    assets = Asset.query.filter_by(userId=user_id).all()
     if not assets:
-        return jsonify({'error': 'No assets found'}), 404
+        return jsonify({'error': 'No assets found for this user'}), 404
     
     result = []
     for asset in assets:
@@ -202,8 +171,22 @@ def get_assets():
             'description': asset.description,
             'status': asset.status,
             'nextMaintenance': asset.nextMaintenance,
-            'value': asset.value
+            'value': asset.value,
+            'dependencies': []
         }
+
+        dependencies = AssetDependency.query.filter_by(assetId=asset.id).all()
+        for dependency in dependencies:
+            dependency_data = {
+                'id': dependency.id,
+                'name': dependency.name,
+                'description': dependency.description,
+                'status': dependency.status,
+                'nextMaintenance': dependency.nextMaintenance,
+                'value': dependency.value
+            }
+            asset_data['dependencies'].append(dependency_data)
+        
         result.append(asset_data)
     
     return jsonify(result)

@@ -9,7 +9,7 @@ create table if not exists asset (
     nextMaintenance DATE
 );
 
-create table if not exists assetDependency (
+create table if not exists assetdependency (
     id VARCHAR(8) PRIMARY KEY,
     assetId VARCHAR(8), 
     name TEXT, 
