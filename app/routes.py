@@ -1,7 +1,6 @@
 from flask import request, jsonify
-from app import app, db 
+from app import app, db
 from app.models import Asset, AssetDependency
-
 
 @app.route('/assets', methods=['POST'])
 def add_asset():

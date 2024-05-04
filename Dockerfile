@@ -1,17 +1,17 @@
-# Use uma imagem base do Python
-FROM python:3.8-slim
+# Use the official Python image as a base image
+FROM python:3.9-slim
 
-# Define o diretório de trabalho como /app
+# Set the working directory in the container
 WORKDIR /app
 
-# Copia os arquivos necessários para o contêiner
-COPY . .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Instala as dependências do Python
+# Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponha a porta 5000 para o exterior
+# Expose port 5000 to the outside world
 EXPOSE 5000
 
-# Comando para iniciar o servidor Flask quando o contêiner for iniciado
+# Run run.py when the container launches
 CMD ["python", "run.py"]
