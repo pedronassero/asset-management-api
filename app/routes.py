@@ -167,6 +167,7 @@ def get_assets(user_id):
     for asset in assets:
         asset_data = {
             'id': asset.id,
+            'userId': user_id,
             'name': asset.name,
             'description': asset.description,
             'status': asset.status,
