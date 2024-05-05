@@ -62,7 +62,6 @@ def delete_asset(id):
 
     return jsonify({'message': 'Asset has been deleted successfully'})
 
-
 @app.route('/assets/<string:id>', methods=['PUT'])
 def update_asset(id):
     data = request.json
@@ -75,6 +74,8 @@ def update_asset(id):
     status = data.get('status')
     nextMaintenance = data.get('nextMaintenance')
     value = data.get('value')
+    dependencies = data.get('dependencies')
+    dependencies_to_delete = data.get('dependenciesToDelete', [])
 
     if name is not None:
         asset.name = name
@@ -86,6 +87,32 @@ def update_asset(id):
         asset.nextMaintenance = nextMaintenance
     if value is not None:
         asset.value = value
+
+    if dependencies:
+        for dependency_data in dependencies:
+            dependency_name = dependency_data.get('name')
+            existing_dependency = AssetDependency.query.filter_by(assetId=id, name=dependency_name).first()
+            if existing_dependency:
+                existing_dependency.description = dependency_data.get('description')
+                existing_dependency.status = dependency_data.get('status')
+                existing_dependency.value = dependency_data.get('value')
+                existing_dependency.nextMaintenance = dependency_data.get('nextMaintenance')
+            else:
+                dependency_description = dependency_data.get('description')
+                dependency_status = dependency_data.get('status')
+                dependency_value = dependency_data.get('value')
+                dependency_next_maintenance = dependency_data.get('nextMaintenance')
+
+                if not dependency_name or not dependency_description or not dependency_status or not dependency_value or not dependency_next_maintenance:
+                    return jsonify({'error': 'Missing dependency data'}), 400
+
+                new_dependency = AssetDependency(assetId=asset.id, name=dependency_name, description=dependency_description, status=dependency_status, value=dependency_value, nextMaintenance=dependency_next_maintenance)
+                db.session.add(new_dependency)
+
+    for dependency_id in dependencies_to_delete:
+        dependency = AssetDependency.query.filter_by(id=dependency_id).first()
+        if dependency:
+            db.session.delete(dependency)
 
     db.session.commit()
 
