@@ -49,12 +49,18 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 - **RF03.1:** O sistema deve listar todos os ativos e suas dependências.
 - **RF03.2:** O sistema deve oferecer uma visualização gráfica das dependências.
 
-**RF04 - Menu de Usuário**
-- **RF04.1:** O sistema deve oferecer um menu interativo para acesso às funcionalidades.
+**RF04 - Autenticação de Usuário**
+- **RF04.1:** O sistema deve permitir que os usuários façam login fornecendo um nome de usuário e uma senha.
 
-**RF05 - Persistência de Dados**
-- **RF05.1:** O sistema deve armazenar os dados em um bando de dados.
-- **RF05.2:** O sistema deve ler os dados do bando de dados ao iniciar.
+**RF05 - Validação de Credenciais**
+- **RF05.1:** O sistema deve verificar se o nome de usuário e a senha fornecidos pelo usuário estão corretos
+
+**RF06 - Menu de Usuário**
+- **RF06.1:** O sistema deve oferecer um menu interativo para acesso às funcionalidades.
+
+**RF07 - Persistência de Dados**
+- **RF07.1:** O sistema deve armazenar os dados em um bando de dados.
+- **RF07.2:** O sistema deve ler os dados do bando de dados ao iniciar.
 
 ### 3.2 Requisitos Não Funcionais
 
@@ -62,7 +68,20 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 - **RNF02 - Performance:** Respostas rápidas às solicitações do usuário.
 - **RNF03 - Segurança:** Dados armazenados devem ser protegidos contra acessos não autorizados.
 
-
+## Stack utilizada:
+### Backend:
+- **Python**
+- **Flask**
+### Persistência de dados:
+- **MySQL**
+- **Firebase**
+### Versionamento:
+- **Git**
+### Virtualização:
+- **Docker**
+### APP:
+- **Swift**
+- **SwiftUI**
 
 ## Testes
 ### 1. Adição de Ativos e Dependências:
@@ -84,6 +103,3 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 ### Verificar se os ativos do usuário estão sendo listados corretamente.
 - ### Passos: Após realizar o login, você verá na página Home todos os seus ativos.
 - ### Resultado esperado: Aparecer na página Home a listagem de todos os ativos do usuários com os seus respectivos detalhes e dependências.
-
-  
-
