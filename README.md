@@ -65,6 +65,6 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 
 
 ## Testes
-###1. Adição de Ativos e Dependências:
+### 1. Adição de Ativos e Dependências:
 **Verificar se um novo ativo pode ser adicionado corretamente ao sistema.
-- ###Passos: Apertar na opção 'Adicionar novo ativo' ou '+', preencher os detalhes do ativo e de suas dependências, apertar no botão 'Adicionar'.
+- ### Passos: Apertar na opção 'Adicionar novo ativo' ou '+', preencher os detalhes do ativo e de suas dependências, apertar no botão 'Adicionar'.
