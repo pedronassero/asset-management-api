@@ -29,7 +29,7 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
   
 - **Menu de Usuário:** Menu interativo para acesso às diversas funcionalidades do sistema.
   
-- **Persistência de Dados:** Salvar e recuperar dados utilizando arquivos CSV.
+- **Persistência de Dados:** Salvar e recuperar dados utilizando Banco de Dados.
 
 ### 2.3 Classes de Usuários e Características
 
