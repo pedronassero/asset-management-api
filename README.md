@@ -66,5 +66,24 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 
 ## Testes
 ### 1. Adição de Ativos e Dependências:
-**Verificar se um novo ativo pode ser adicionado corretamente ao sistema.
+### Verificar se um novo ativo pode ser adicionado corretamente ao sistema.
 - ### Passos: Apertar na opção 'Adicionar novo ativo' ou '+', preencher os detalhes do ativo e de suas dependências, apertar no botão 'Adicionar'.
+- ### Resultado esperado: O ativo é adicionado no banco de dados.
+
+### 2. Remoção de Ativos:
+### Verificar se um ativo será removido do sistema junto de suas dependências.
+- ### Passos: Arraste pro lado esquerdo o ativo de sua escolha e aperte na mensagem vermelha "Deletar".
+- ### Resultado esperado: O ativo é removido junto de suas dependências do banco de dados.
+
+### 3. Edição de Ativos:
+### Verificar se a edição de dados de um ativo é feita corretamente no sistema.
+- ### Passos: Clicar no ativo de sua escolha, clicar no ícone de edição (caneta), editar as informações, clicar no botão 'Salvar'.
+- ### Resultado esperado: O ativo é editado com suas novas informações no banco de dados.
+
+### 4. Listagem de Ativos:
+### Verificar se os ativos do usuário estão sendo listados corretamente.
+- ### Passos: Após realizar o login, você verá na página Home todos os seus ativos.
+- ### Resultado esperado: Aparecer na página Home a listagem de todos os ativos do usuários com os seus respectivos detalhes e dependências.
+
+  
+
