@@ -61,3 +61,10 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 - **RNF01 - Usabilidade:** Interface simples e intuitiva.
 - **RNF02 - Performance:** Respostas rápidas às solicitações do usuário.
 - **RNF03 - Segurança:** Dados armazenados devem ser protegidos contra acessos não autorizados.
+
+
+
+## Testes
+###1. Adição de Ativos e Dependências:
+**Verificar se um novo ativo pode ser adicionado corretamente ao sistema.
+- ###Passos: Apertar na opção 'Adicionar novo ativo' ou '+', preencher os detalhes do ativo e de suas dependências, apertar no botão 'Adicionar'.
