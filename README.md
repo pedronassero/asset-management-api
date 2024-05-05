@@ -31,12 +31,6 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
   
 - **Persistência de Dados:** Salvar e recuperar dados utilizando Banco de Dados.
 
-### 2.3 Classes de Usuários e Características
-
-- **Administradores de TI:** Responsáveis pela gestão dos ativos de TI e que utilizarão o sistema para manter registros atualizados.
-  
-- **Auditores de TI:** Usarão o sistema para verificar e revisar as informações dos ativos e suas dependências.
-
 ## 3. Requisitos Específicos
 
 ### 3.1 Requisitos Funcionais
@@ -48,7 +42,7 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 
 **RF02 - Manutenção de Dependências**
 - **RF02.1:** O sistema deve permitir a criação de dependências entre ativos.
-- **RF02.2:** O sistema deve permitir a modificação de dependências existentes.
+- **RF02.2:** !O sistema deve permitir a modificação de dependências existentes!.
 - **RF02.3:** O sistema deve permitir a exclusão de dependências.
 
 **RF03 - Listagem de Ativos e Dependências**
@@ -59,16 +53,11 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 - **RF04.1:** O sistema deve oferecer um menu interativo para acesso às funcionalidades.
 
 **RF05 - Persistência de Dados**
-- **RF05.1:** O sistema deve armazenar os dados em formato CSV.
-- **RF05.2:** O sistema deve ler os dados de um arquivo CSV ao iniciar.
+- **RF05.1:** O sistema deve armazenar os dados em um bando de dados.
+- **RF05.2:** O sistema deve ler os dados do bando de dados ao iniciar.
 
 ### 3.2 Requisitos Não Funcionais
 
 - **RNF01 - Usabilidade:** Interface simples e intuitiva.
 - **RNF02 - Performance:** Respostas rápidas às solicitações do usuário.
 - **RNF03 - Segurança:** Dados armazenados devem ser protegidos contra acessos não autorizados.
-
-## 4. Apendices
-
-- **A1:** Glossário de termos técnicos utilizados.
-- **A2:** Referências a documentação externa ou normas aplicáveis.
