@@ -124,3 +124,12 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 ### Verificar se a pesquisa de ativos está funcionando corretamente no sistema.
 - ### Passos: Acesse a página principal do sistema, localize o campo de pesquisa de ativos, insira o nome do ativo que deseja pesquisar.
 - ### Resultado esperado: Os ativos que correspondem à pesquisa são exibidos corretamente na lista de ativos.
+
+
+## Integrantes do Grupo:
+- ### Pedro Nasser
+- ### Igor Max
+- ### Filipe Marra
+- ### Brenno Lopes
+- ### Lucas Rocha
+- ### Caleb Medeiros
