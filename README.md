@@ -18,7 +18,7 @@ O sistema permitirá a manutenção de ativos de TI, gerenciamento das dependên
 
 ### 2.1 Perspectiva do Produto
 
-O sistema funcionará de forma independente e não integrará inicialmente com outros sistemas. Será uma aplicação standalone com interface de linha de comando (CLI).
+Nosso sistema completo de aplicativo com API e banco de dados oferece uma solução abrangente e integrada para atender às necessidades do trabalho proposto.
 
 ### 2.2 Funcionalidades do Produto
 
@@ -131,5 +131,5 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 - ### Igor Max
 - ### Filipe Marra
 - ### Brenno Lopes
-- ### Lucas Rocha
+- ### Lucas Dantas
 - ### Caleb Medeiros
