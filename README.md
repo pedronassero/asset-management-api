@@ -110,17 +110,17 @@ O sistema funcionará de forma independente e não integrará inicialmente com o
 - ### Passos: Selecione o ativo que deseja editar as dependências, abra a seção de dependências do ativo, edite as dependências conforme necessário, salve as alterações.
 - ### Resultado esperado: As dependências do ativo são editadas corretamente no sistema.
 
-### 6 Cadastro de Usuário:
+### 6. Cadastro de Usuário:
 ### Verificar se um novo usuário pode se cadastrar com sucesso no sistema.
 - ### Passos: Acesse a página de cadastro do sistema, preencha todos os campos obrigatórios do formulário de cadastro, como nome de usuário, senha, e-mail, etc, aperte no botão de cadastro.
 - ### Resultado esperado: O novo usuário é cadastrado com sucesso no banco de dados e redirecionado para a página principal do sistema.
 
-### 7 Login com Sucesso:
+### 7. Login com Sucesso:
 ### Verificar se um usuário pode fazer login com sucesso no sistema utilizando credenciais válidas.
 - ### Passos: Acesse a página de login do sistema, insira o email e a senha corretos nos campos de login, aperte no botão de login.
 - ### Resultado esperado: O usuário é redirecionado para a página principal do sistema após fazer login com sucesso.
 
-### 8 Pesquisa de Ativo:
+### 8. Pesquisa de Ativo:
 ### Verificar se a pesquisa de ativos está funcionando corretamente no sistema.
 - ### Passos: Acesse a página principal do sistema, localize o campo de pesquisa de ativos, insira o nome do ativo que deseja pesquisar.
 - ### Resultado esperado: Os ativos que correspondem à pesquisa são exibidos corretamente na lista de ativos.
