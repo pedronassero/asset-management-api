@@ -1,4 +1,4 @@
-create table if not exists asset (
+CREATE TABLE IF NOT EXISTS asset (
     id VARCHAR(8) PRIMARY KEY,
     userId VARCHAR(50),
     name VARCHAR(100),
@@ -9,7 +9,7 @@ create table if not exists asset (
     nextMaintenance DATE
 );
 
-create table if not exists assetdependency (
+CREATE TABLE IF NOT EXISTS assetdependency (
     id VARCHAR(8) PRIMARY KEY,
     assetId VARCHAR(8), 
     name TEXT, 
