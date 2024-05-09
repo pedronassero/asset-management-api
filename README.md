@@ -4,6 +4,11 @@
 ## Esse aplicativo de gerenciamento de ativos é uma ferramenta projetada para ajudar empresas e indivíduos a acompanhar, monitorar e gerenciar seus ativos de forma eficiente. Isso inclui uma variedade de itens, como equipamentos, propriedades, veículos e investimentos financeiros.
 
 
+
+https://github.com/pedronassero/assets-management-api/assets/121307602/3c626927-08e1-4d46-be28-82ff7c6e3a24
+
+
+
 ## 1. Introdução
 
 ### 1.1 Propósito
